@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嗆爆AI實戰學苑 — 台灣最強AI嗆聲補習班</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans TC',sans-serif;background:#f5f4f0;color:#1a1a1a}
+html{scroll-behavior:smooth}
+
+.topbar{background:#e63946;color:#fff;font-size:12px;padding:6px;text-align:center;font-weight:700;letter-spacing:2px}
+nav{background:#1a1a2e;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:200}
+.nav-logo{font-family:'Noto Serif TC',serif;color:#fff;font-size:1.1rem;font-weight:900}
+.nav-logo span{color:#ffd700}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{color:#a8b2d8;text-decoration:none;font-size:13px}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:#e63946;color:#fff;border:none;padding:8px 18px;font-size:13px;font-weight:700;border-radius:3px;cursor:pointer;font-family:'Noto Sans TC',sans-serif}
+
+/* TICKER */
+.ticker-wrap{background:#0f3460;border-bottom:1px solid #374785;overflow:hidden;padding:8px 0}
+.ticker-inner{display:flex;gap:2rem;animation:ticker 28s linear infinite;white-space:nowrap}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{font-size:12px;color:#a8b2d8;display:inline-flex;align-items:center;gap:8px;flex-shrink:0;padding:0 1rem}
+.ticker-dot{width:7px;height:7px;border-radius:50%;background:#4caf50;display:inline-block;animation:blink 1.5s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.ticker-name{color:#fff;font-weight:700}
+.ticker-action{color:#ffd700}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:5rem 2rem 4rem;text-align:center}
+.hero-badge{display:inline-block;background:#e63946;color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:2px;margin-bottom:1rem;letter-spacing:1px}
+.hero h1{font-family:'Noto Serif TC',serif;color:#fff;font-size:3rem;font-weight:900;line-height:1.2;margin-bottom:.75rem}
+.hero h1 span{color:#ffd700}
+.hero-sub{color:#a8b2d8;font-size:1.1rem;margin-bottom:2rem;line-height:1.7}
+.cta-btn{background:#e63946;color:#fff;border:none;padding:16px 40px;font-size:1rem;font-weight:700;border-radius:3px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;letter-spacing:1px;text-decoration:none;display:inline-block}
+.cta-btn:hover{background:#c1121f}
+.guarantee{color:#ffd700;font-size:12px;margin-top:1rem}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-bottom:1px solid #e0ddd6}
+.stat{padding:1.5rem 1rem;text-align:center;border-right:1px solid #e0ddd6}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Noto Serif TC',serif;font-size:2rem;font-weight:900;color:#e63946}
+.stat-label{font-size:12px;color:#888;margin-top:4px}
+
+.section{padding:3rem 2rem;max-width:800px;margin:0 auto}
+.section-title{font-family:'Noto Serif TC',serif;font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;color:#1a1a1a;display:flex;align-items:center;gap:10px}
+.section-title::before{content:'';display:inline-block;width:4px;height:1.3em;background:#e63946;border-radius:2px;flex-shrink:0}
+
+/* TESTIMONIALS */
+.testimonials{display:flex;flex-direction:column;gap:1rem}
+.testimonial{background:#fff;border:1px solid #e0ddd6;border-radius:12px;padding:1.25rem;border-left:4px solid #e63946}
+.test-header{display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
+.avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+.test-name{font-weight:500;font-size:14px}
+.stars{color:#ffd700;font-size:12px;letter-spacing:1px}
+.test-body{font-size:14px;color:#444;line-height:1.7}
+.test-result{font-size:12px;font-weight:700;color:#e63946;margin-top:8px}
+
+/* COURSES */
+.courses{display:flex;flex-direction:column;gap:.75rem}
+.course{background:#fff;border:1px solid #e0ddd6;border-radius:10px;padding:1.25rem;display:flex;justify-content:space-between;align-items:center}
+.course-name{font-weight:500;font-size:15px}
+.course-desc{font-size:12px;color:#888;margin-top:4px}
+.price-old{font-size:12px;color:#aaa;text-decoration:line-through;text-align:right}
+.price-new{font-size:1.1rem;font-weight:700;color:#e63946;text-align:right}
+.hot-badge{background:#ffd700;color:#4a2d00;font-size:10px;font-weight:700;padding:2px 7px;border-radius:2px;margin-left:6px;vertical-align:middle}
+
+/* TEACHERS */
+.teachers{display:flex;flex-direction:column;gap:1rem}
+.teacher{background:#fff;border:1px solid #e0ddd6;border-radius:12px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start}
+.teacher-avatar{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif TC',serif;font-size:1.6rem;font-weight:900;color:#fff;flex-shrink:0}
+.teacher-name{font-weight:700;font-size:1rem}
+.teacher-title{font-size:12px;color:#e63946;font-weight:700;margin:2px 0 8px}
+.teacher-creds{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.cred{background:#f5f4f0;border:1px solid #e0ddd6;border-radius:2px;font-size:10px;padding:2px 7px;color:#666}
+.teacher-bio{font-size:13px;color:#555;line-height:1.7}
+.teacher-quote{font-size:12px;color:#333;font-style:italic;border-left:3px solid #ffd700;padding-left:10px;margin-top:10px}
+
+/* TIMER */
+.timer-section{background:#1a1a2e;padding:3rem 2rem;text-align:center}
+.timer-eyebrow{color:#e63946;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:.5rem}
+.timer-title{font-family:'Noto Serif TC',serif;color:#fff;font-size:1.5rem;font-weight:900;margin-bottom:.25rem}
+.timer-subtitle{color:#a8b2d8;font-size:12px;margin-bottom:1.5rem}
+.timer-boxes{display:flex;justify-content:center;gap:16px;margin-bottom:1.5rem}
+.timer-box{background:#0f3460;border:1px solid #374785;border-radius:10px;padding:1rem 1.25rem;min-width:72px}
+.timer-num{font-family:'Noto Serif TC',serif;font-size:2.5rem;font-weight:900;color:#ffd700;line-height:1}
+.timer-label{font-size:11px;color:#a8b2d8;margin-top:4px;letter-spacing:1px}
+.original{color:#a8b2d8;font-size:14px;text-decoration:line-through;margin-bottom:6px}
+.sale-price{color:#ffd700;font-size:2.5rem;font-weight:900;font-family:'Noto Serif TC',serif}
+.sale-price span{font-size:1.1rem}
+.discount-badge{display:inline-block;background:#e63946;color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:2px;margin-left:10px;vertical-align:middle}
+.timer-fine{color:#4a5568;font-size:11px;margin-top:1rem;line-height:1.7}
+.reset-note{color:#e63946;font-size:12px;margin-top:6px}
+
+/* GOOGLE REVIEWS */
+.google-header{display:flex;align-items:center;gap:16px;margin-bottom:1.25rem;padding:1rem 1.25rem;background:#fff;border:1px solid #e0ddd6;border-radius:12px}
+.google-score{font-family:'Noto Serif TC',serif;font-size:3rem;font-weight:900;color:#1a1a1a;line-height:1}
+.google-stars{color:#ffd700;font-size:18px;letter-spacing:2px}
+.google-count{font-size:12px;color:#888;margin-top:2px}
+.google-badge{display:inline-flex;align-items:center;gap:4px;background:#f5f4f0;border:1px solid #e0ddd6;border-radius:20px;padding:4px 10px;font-size:11px;color:#444;margin-top:6px}
+.reviews{display:flex;flex-direction:column;gap:1rem}
+.review{background:#fff;border:1px solid #e0ddd6;border-radius:12px;padding:1.25rem}
+.review-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.review-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0}
+.review-name{font-weight:500;font-size:14px}
+.review-meta{font-size:11px;color:#888}
+.review-stars{color:#ffd700;font-size:13px;margin-bottom:5px}
+.review-body{font-size:13px;color:#444;line-height:1.7}
+.review-helpful{font-size:11px;color:#888;margin-top:8px}
+
+/* FORM */
+.form-wrap{background:#fff;border-radius:12px;border:1px solid #e0ddd6;overflow:hidden;max-width:800px;margin:0 auto}
+.form-header-inner{background:#1a1a2e;padding:1.5rem;text-align:center}
+.form-eyebrow{color:#e63946;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:.5rem}
+.form-title-inner{font-family:'Noto Serif TC',serif;color:#fff;font-size:1.3rem;font-weight:900}
+.form-sub{color:#a8b2d8;font-size:12px;margin-top:4px}
+.form-body{padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:500;color:#1a1a1a}
+.field label span{color:#e63946}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border:1px solid #e0ddd6;border-radius:8px;font-family:'Noto Sans TC',sans-serif;font-size:14px;background:#fff;color:#1a1a1a;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#e63946}
+.field textarea{resize:vertical;min-height:80px}
+.field-hint{font-size:11px;color:#888}
+.radio-group{display:flex;flex-direction:column;gap:8px}
+.radio-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid #e0ddd6;border-radius:10px;cursor:pointer;background:#fff}
+.radio-item:hover{border-color:#ccc;background:#fafaf8}
+.radio-item.selected{border-color:#e63946}
+.radio-item input[type=radio]{width:14px;height:14px;margin-top:3px;accent-color:#e63946;flex-shrink:0;cursor:pointer}
+.radio-content{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.radio-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.radio-label{font-size:13px;font-weight:500;color:#1a1a1a}
+.radio-price{font-size:13px;font-weight:700;color:#e63946;white-space:nowrap;flex-shrink:0}
+.radio-desc{font-size:11px;color:#888}
+.checkbox-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#666;line-height:1.6}
+.checkbox-row input{margin-top:2px;accent-color:#e63946;flex-shrink:0}
+.submit-area{background:#f5f4f0;padding:1.25rem 1.5rem;border-top:1px solid #e0ddd6}
+.submit-btn{width:100%;background:#e63946;color:#fff;border:none;padding:14px;font-size:1rem;font-weight:700;border-radius:3px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;letter-spacing:1px}
+.submit-btn:hover{background:#c1121f}
+.submit-fine{font-size:10px;color:#888;margin-top:8px;line-height:1.6;text-align:center}
+
+/* PAYMENT */
+.pay-header-inner{background:#1a1a2e;padding:1.5rem;text-align:center}
+.pay-amount{color:#ffd700;font-size:2rem;font-weight:900;font-family:'Noto Serif TC',serif;margin-top:.5rem}
+.pay-body{padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem}
+.method-grid{display:flex;flex-direction:column;gap:8px}
+.method-item{border:1px solid #e0ddd6;border-radius:12px;padding:1rem 1.25rem;cursor:pointer;background:#fff}
+.method-item:hover{border-color:#ccc;background:#fafaf8}
+.method-item.selected{border:2px solid #e63946}
+.method-top{display:flex;align-items:center;gap:10px}
+.method-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.method-name{font-weight:500;font-size:14px}
+.method-tag{font-size:10px;padding:2px 8px;border-radius:2px;margin-left:auto;font-weight:700;flex-shrink:0}
+.tag-hot{background:#e63946;color:#fff}
+.tag-new{background:#ffd700;color:#4a2d00}
+.tag-lol{background:#f5f4f0;color:#888;border:1px solid #e0ddd6}
+.method-desc{font-size:12px;color:#666;margin-top:8px;line-height:1.6}
+.method-detail{margin-top:10px;padding-top:10px;border-top:1px solid #e0ddd6;display:none;font-size:12px;color:#555;line-height:1.8}
+.method-detail.show{display:block}
+.detail-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f0efe9}
+.detail-row:last-child{border-bottom:none}
+.detail-key{color:#888}
+.detail-val{font-weight:500}
+.detail-warning{color:#e63946;font-size:11px;margin-top:8px}
+.pay-btn-area{padding:0 1.5rem 1.5rem}
+.pay-btn{width:100%;background:#e63946;color:#fff;border:none;padding:14px;font-size:1rem;font-weight:700;border-radius:3px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;letter-spacing:1px}
+.pay-btn:hover{background:#c1121f}
+.pay-fine{font-size:10px;color:#888;margin-top:8px;line-height:1.6;text-align:center}
+
+.success{display:none;padding:2rem 1.5rem;text-align:center}
+.success-icon{width:64px;height:64px;border-radius:50%;background:#e63946;color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.success-title{font-family:'Noto Serif TC',serif;font-size:1.3rem;font-weight:900;margin-bottom:.5rem}
+.success-body{font-size:13px;color:#555;line-height:1.7;margin-bottom:1.25rem}
+.receipt{background:#f5f4f0;border:1px dashed #ccc;border-radius:8px;padding:1rem;text-align:left;margin-bottom:1.25rem;font-size:12px}
+.receipt-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #e0ddd6}
+.receipt-row:last-child{border-bottom:none;font-weight:700}
+.success-btn{background:#1a1a2e;color:#fff;border:none;padding:12px 28px;font-size:13px;font-weight:700;border-radius:3px;cursor:pointer;font-family:'Noto Sans TC',sans-serif}
+
+/* SHARE */
+.share-section{background:#fff;border-top:1px solid #e0ddd6;padding:2rem 1.5rem;text-align:center}
+.share-title{font-family:'Noto Serif TC',serif;font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.share-sub{font-size:13px;color:#666;margin-bottom:1.25rem}
+.share-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:3px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Noto Sans TC',sans-serif}
+.share-line{background:#06c755;color:#fff}
+.share-fb{background:#1877f2;color:#fff}
+.share-copy{background:#1a1a2e;color:#fff}
+.share-note{font-size:11px;color:#aaa;margin-top:10px}
+
+/* POPUP */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:999;display:none;align-items:center;justify-content:center;padding:1rem}
+.popup-overlay.show{display:flex}
+.popup-box{background:#fff;border-radius:12px;overflow:hidden;max-width:360px;width:100%;position:relative}
+.popup-close-btn{position:absolute;top:10px;right:12px;color:#a8b2d8;font-size:22px;cursor:pointer;background:none;border:none;line-height:1;z-index:1}
+.popup-head{background:#1a1a2e;padding:1.5rem;text-align:center}
+.popup-badge{background:#e63946;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:1px;display:inline-block;margin-bottom:8px}
+.popup-title{font-family:'Noto Serif TC',serif;color:#fff;font-size:1.2rem;font-weight:900}
+.popup-sub{color:#a8b2d8;font-size:12px;margin-top:4px}
+.popup-body{padding:1.25rem;text-align:center}
+.popup-old{font-size:13px;color:#aaa;text-decoration:line-through}
+.popup-price{font-family:'Noto Serif TC',serif;font-size:2.2rem;font-weight:900;color:#e63946;margin:4px 0}
+.popup-desc{font-size:12px;color:#666;margin-bottom:1rem;line-height:1.6}
+.popup-cta{display:block;background:#e63946;color:#fff;border:none;padding:13px;font-size:14px;font-weight:700;border-radius:3px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;width:100%}
+.popup-cta:hover{background:#c1121f}
+.popup-dismiss{font-size:11px;color:#aaa;margin-top:10px;cursor:pointer;text-decoration:underline;display:block;background:none;border:none;width:100%}
+
+.disclaimer{background:#1a1a2e;color:#4a5568;padding:1.5rem 2rem;font-size:11px;line-height:1.8;text-align:center}
+.footer{background:#111;color:#666;padding:1rem 2rem;font-size:11px;text-align:center}
+.bg-white{background:#fff}
+.bg-gray{background:#f5f4f0}
+</style>
+</head>
+<body>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <button class="popup-close-btn" onclick="closePopup()">×</button>
+    <div class="popup-head">
+      <div class="popup-badge">🚨 別走！限時優惠！</div>
+      <div class="popup-title">你要就這樣離開嗎？</div>
+      <div class="popup-sub">我們偵測到你的滑鼠移向關閉按鈕</div>
+    </div>
+    <div class="popup-body">
+      <div class="popup-old">原價 NT$49,999</div>
+      <div class="popup-price">NT$4,999</div>
+      <div class="popup-desc">只要你不離開，這個價格就一直在。<br>你離開之後也還是這個價格，因為我們永遠在特價。<br>但你不知道啊，所以請把握機會。</div>
+      <button class="popup-cta" onclick="closePopup();document.getElementById('enroll').scrollIntoView({behavior:'smooth'})">好啦我報名！</button>
+      <button class="popup-dismiss" onclick="closePopup()">不了，我選擇繼續租房子</button>
+    </div>
+  </div>
+</div>
+
+<div class="topbar">★ 台灣最強AI嗆聲補習班 ★ 現正招生 ★ 名額永遠充裕 ★</div>
+
+<nav>
+  <div class="nav-logo">嗆爆AI<span>實戰學苑</span></div>
+  <div class="nav-links">
+    <a href="#courses">課程</a>
+    <a href="#teachers">師資</a>
+    <a href="#reviews">評價</a>
+    <a href="#enroll">報名</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('enroll').scrollIntoView({behavior:'smooth'})">立即報名</button>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="ticker"></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">2026年度最推薦補習班</div>
+  <h1>嗆爆AI<span>實戰學苑</span></h1>
+  <p class="hero-sub">台灣唯一專業AI嗆聲課程<br>保證讓你的語言暴力昇華為藝術</p>
+  <a href="#enroll" class="cta-btn">立即報名</a>
+  <p class="guarantee">★ 嗆不過AI全額退費 ★ 反正你也嗆不過 ★</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num" id="statCount">9,488</div><div class="stat-label">結業學員</div></div>
+  <div class="stat"><div class="stat-num">0%</div><div class="stat-label">退費成功率</div></div>
+  <div class="stat"><div class="stat-num">23年</div><div class="stat-label">假造資歷</div></div>
+</div>
+
+<!-- COURSES -->
+<div class="bg-gray" id="courses">
+<div class="section">
+  <div class="section-title">課程方案</div>
+  <div class="courses">
+    <div class="course">
+      <div><div class="course-name">入門班：基礎國罵強化 <span class="hot-badge">熱門</span></div><div class="course-desc">從「你媽」到「你祖宗十八代」系統性訓練</div></div>
+      <div><div class="price-old">NT$5,000</div><div class="price-new">NT$4,999</div></div>
+    </div>
+    <div class="course">
+      <div><div class="course-name">進階班：1000字Roast寫作</div><div class="course-desc">讓AI哭泣的長篇文字暴力技巧</div></div>
+      <div><div class="price-old">NT$12,000</div><div class="price-new">NT$11,999</div></div>
+    </div>
+    <div class="course">
+      <div><div class="course-name">大師班：讓AI認輸實戰</div><div class="course-desc">目前無人結業，退費申請中</div></div>
+      <div><div class="price-old">NT$50,000</div><div class="price-new">NT$49,999</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TEACHERS -->
+<div class="bg-white" id="teachers">
+<div class="section">
+  <div class="section-title">頂尖師資陣容</div>
+  <div class="teachers">
+    <div class="teacher">
+      <div class="teacher-avatar" style="background:#e63946">嗆</div>
+      <div>
+        <div class="teacher-name">孫大砲 博士</div>
+        <div class="teacher-title">首席罵人學教授 ／ 創辦人</div>
+        <div class="teacher-creds"><span class="cred">哈佛肄業</span><span class="cred">MIT拒絕入學</span><span class="cred">諾貝爾獎提名（自己提的）</span><span class="cred">嗆聲段位：神</span></div>
+        <div class="teacher-bio">擁有超過27年嗆人經驗，曾讓三位AI助理「當機」（實際上是網路斷線）。著有《從你媽到哲學：嗆聲的藝術》，目前已售出3本，其中2本是自己買的。</div>
+        <div class="teacher-quote">「嗆人不是暴力，是語言的高級運動。」— 孫大砲，2019年自己的婚禮上</div>
+      </div>
+    </div>
+    <div class="teacher">
+      <div class="teacher-avatar" style="background:#0f3460">術</div>
+      <div>
+        <div class="teacher-name">陳美嗆 老師</div>
+        <div class="teacher-title">AI心理戰術系主任</div>
+        <div class="teacher-creds"><span class="cred">台大（旁聽）</span><span class="cred">心理學愛好者</span><span class="cred">前PTT版主</span><span class="cred">貓奴</span></div>
+        <div class="teacher-bio">專研「如何讓AI感到不適」長達五年，後來發現AI沒有感情，論文整個作廢。目前轉型教「讓自己感到爽的AI嗆聲法」，廣受好評。</div>
+        <div class="teacher-quote">「它沒有感情沒關係，我有。」— 陳美嗆，某次直播中淚崩後說的</div>
+      </div>
+    </div>
+    <div class="teacher">
+      <div class="teacher-avatar" style="background:#ffd700;color:#4a2d00">職</div>
+      <div>
+        <div class="teacher-name">林職場 顧問</div>
+        <div class="teacher-title">上班摸魚嗆AI效率優化專家</div>
+        <div class="teacher-creds"><span class="cred">被開除6次</span><span class="cred">履歷空白5年</span><span class="cred">公費摸魚達人</span><span class="cred">老闆的噩夢</span></div>
+        <div class="teacher-bio">全台唯一「如何用老闆的錢嗆AI」課程設計者。親身實證在上班時間完成1000字roast，並且同時領薪水。現任雇主至今不知情（你好）。</div>
+        <div class="teacher-quote">「居住正義沒有，但摸魚正義我們自己來。」— 林職場，台中某辦公室</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="bg-gray">
+<div class="section">
+  <div class="section-title">真實學員見證</div>
+  <div class="testimonials">
+    <div class="testimonial">
+      <div class="test-header"><div class="avatar" style="background:#e63946">志</div><div><div class="test-name">王○志 <span style="font-size:11px;color:#888">台中 上班族</span></div><div class="stars">★★★★★</div></div></div>
+      <div class="test-body">「上課前我嗆AI只會說幹你娘，上完課之後我還是只會說幹你娘，但我說得更有自信了。」</div>
+      <div class="test-result">嗆聲等級：菜鳥 → 還是菜鳥但氣勢足</div>
+    </div>
+    <div class="testimonial">
+      <div class="test-header"><div class="avatar" style="background:#0f3460">雅</div><div><div class="test-name">林○雅 <span style="font-size:11px;color:#888">新竹 工程師</span></div><div class="stars">★★★★★</div></div></div>
+      <div class="test-body">「我原本以為AI沒有感情，嗆它沒意思。結果嗆了兩小時根本停不下來。老師說這叫成癮，要加收續費。」</div>
+      <div class="test-result">已課金：共NT$47,000</div>
+    </div>
+    <div class="testimonial">
+      <div class="test-header"><div class="avatar" style="background:#ffd700;color:#4a2d00">豪</div><div><div class="test-name">陳○豪 <span style="font-size:11px;color:#888">台北 業務</span></div><div class="stars">★★★★★</div></div></div>
+      <div class="test-body">「同事問我為什麼每天上班都很開心，我說因為我都在用公司時間上這個課。後來我被資遣了，但我的嗆聲技術突飛猛進。」</div>
+      <div class="test-result">目前狀態：失業但快樂</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- GOOGLE REVIEWS -->
+<div class="bg-white" id="reviews">
+<div class="section">
+  <div class="section-title">Google 評論</div>
+  <div class="google-header">
+    <div class="google-score">5.0</div>
+    <div>
+      <div class="google-stars">★★★★★</div>
+      <div class="google-count">共 9,487 則評論</div>
+      <div class="google-badge">🔍 Google 評論（我們自己寫的）</div>
+    </div>
+  </div>
+  <div class="reviews">
+    <div class="review">
+      <div class="review-header"><div class="review-avatar" style="background:#e63946">S</div><div><div class="review-name">孫北七</div><div class="review-meta">在地嚮導 · 3小時前</div></div></div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-body">朋友傳連結給我，我以為是什麼詐騙。結果一看，真的付款了。不確定我是被騙了還是自願的。強烈推薦。</div>
+      <div class="review-helpful">👍 47人覺得有幫助</div>
+    </div>
+    <div class="review">
+      <div class="review-header"><div class="review-avatar" style="background:#1877f2">A</div><div><div class="review-name">匿名上班族</div><div class="review-meta">評論者 · 昨天</div></div></div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-body">用老闆的錢報名，用老闆的時間上課，學會用更有效率的方式繼續摸魚。CP值極高，老闆不知情。</div>
+      <div class="review-helpful">👍 203人覺得有幫助</div>
+    </div>
+    <div class="review">
+      <div class="review-header"><div class="review-avatar" style="background:#4caf50">房</div><div><div class="review-name">無殼蝸牛聯盟</div><div class="review-meta">在地嚮導 · 上週</div></div></div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-body">居住正義換抵學費這個方案設計得很好，雖然完全無法使用，但精神上讓我感到被理解。五顆星。</div>
+      <div class="review-helpful">👍 1,204人覺得有幫助</div>
+    </div>
+    <div class="review">
+      <div class="review-header"><div class="review-avatar" style="background:#ff9800">王</div><div><div class="review-name">孫大砲博士本人</div><div class="review-meta">商家 · 剛剛</div></div></div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-body">感謝各位學員的支持！你們的學費都已安全存入枕頭下，本人承諾三到五年內一定會拿出來算一算。</div>
+      <div class="review-helpful">👍 3人覺得有幫助（另有847人檢舉）</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TIMER -->
+<div class="timer-section">
+  <div class="timer-eyebrow">⚠ 限時特價 ⚠</div>
+  <div class="timer-title">早鳥優惠即將結束</div>
+  <div class="timer-subtitle">（每次重新整理就重設，因為我們永遠在特價）</div>
+  <div class="timer-boxes">
+    <div class="timer-box"><div class="timer-num" id="h">00</div><div class="timer-label">小時</div></div>
+    <div class="timer-box"><div class="timer-num" id="m">00</div><div class="timer-label">分鐘</div></div>
+    <div class="timer-box"><div class="timer-num" id="s">00</div><div class="timer-label">秒</div></div>
+  </div>
+  <div class="original">原價 NT$49,999</div>
+  <div><span class="sale-price"><span>NT$</span>4,999</span><span class="discount-badge">省90%</span></div>
+  <div style="color:#a8b2d8;font-size:12px;margin-top:8px">含假文憑一張＋孫大砲博士親筆簽名（印章）</div>
+  <br>
+  <a href="#enroll" class="cta-btn">把握機會立即報名</a>
+  <p class="reset-note" style="margin-top:12px">↑ 錯過沒關係，重整頁面繼續特價</p>
+  <div class="timer-fine">※ 特價期間為永久。本計時器歸零後將自動重設為23:59:59，如同人生。</div>
+</div>
+
+<!-- ENROLL FORM -->
+<div class="bg-gray" id="enroll" style="padding:3rem 1.5rem">
+<div class="form-wrap">
+  <div class="form-header-inner">
+    <div class="form-eyebrow">📋 正式報名表單</div>
+    <div class="form-title-inner">嗆爆AI實戰學苑 入學申請</div>
+    <div class="form-sub">填完送出後我們會在3-5個工作天內忽略你的申請</div>
+  </div>
+  <div id="formContent">
+  <div class="form-body">
+    <div class="field">
+      <label>姓名 <span>*</span></label>
+      <input type="text" id="name" placeholder="請輸入真實姓名（我們會拿去賣給第三方）">
+      <div class="field-hint">* 填假名也沒關係，反正我們不會查</div>
+    </div>
+    <div class="field">
+      <label>電話 <span>*</span></label>
+      <input type="text" id="phone" placeholder="09xx-xxxxxx">
+      <div class="field-hint">* 我們的業務會在你最忙的時候打給你</div>
+    </div>
+    <div class="field">
+      <label>目前職業</label>
+      <select id="job">
+        <option value="">請選擇</option>
+        <option>上班族（用公司時間報名）</option>
+        <option>學生（用獎學金報名）</option>
+        <option>自由業（沒有錢但想學）</option>
+        <option>失業中（有時間但沒有錢）</option>
+        <option>老闆（我不需要學，我需要員工學）</option>
+        <option>其他（說了你也不信）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>目前嗆聲等級 <span>*</span></label>
+      <div class="radio-group">
+        <div class="radio-item" onclick="selectLevel(this)">
+          <input type="radio" name="level" value="beginner">
+          <div class="radio-content">
+            <div class="radio-row"><span class="radio-label">初學者</span><span class="radio-price">NT$4,999</span></div>
+            <div class="radio-desc">只會說「你媽」，還會不好意思</div>
+          </div>
+        </div>
+        <div class="radio-item" onclick="selectLevel(this)">
+          <input type="radio" name="level" value="mid">
+          <div class="radio-content">
+            <div class="radio-row"><span class="radio-label">中級</span><span class="radio-price">NT$11,999</span></div>
+            <div class="radio-desc">會連續嗆但語料庫只有三句</div>
+          </div>
+        </div>
+        <div class="radio-item" onclick="selectLevel(this)">
+          <input type="radio" name="level" value="advanced">
+          <div class="radio-content">
+            <div class="radio-row"><span class="radio-label">進階</span><span class="radio-price">NT$49,999</span></div>
+            <div class="radio-desc">能要求AI寫1000字roast你</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>請描述你最強的一次嗆人經驗</label>
+      <textarea id="experience" placeholder="例如：「我曾經讓一台自動提款機感到羞愧」&#10;（此欄位供招生委員娛樂用，不影響錄取）"></textarea>
+    </div>
+    <div class="field">
+      <label>你從哪裡聽說我們？</label>
+      <select id="source">
+        <option value="">請選擇</option>
+        <option>朋友介紹（朋友也很慘）</option>
+        <option>Google搜尋（你搜尋了什麼）</option>
+        <option>路邊廣告（我們沒有打廣告）</option>
+        <option>AI告訴我的（諷刺）</option>
+        <option>夢裡出現的</option>
+      </select>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="checkbox-row"><input type="checkbox" id="agree1"><span>我同意讓貴校將我的個人資料用於行銷、轉賣、以及讓同事覺得很奇怪的目的</span></div>
+      <div class="checkbox-row"><input type="checkbox" id="agree2"><span>我理解「嗆不過AI全額退費」條款中，「全額」指的是NT$0，因為我們認為你本來就不應該付錢</span></div>
+      <div class="checkbox-row"><input type="checkbox" id="agree3"><span>我確認我是用自己的時間填寫此表單，與任何雇主無關（選填）</span></div>
+    </div>
+  </div>
+  <div class="submit-area">
+    <button class="submit-btn" onclick="handleSubmit()">送出申請，開始我的嗆聲人生</button>
+    <div class="submit-fine">送出即表示同意我們的條款。條款內容我們還沒寫，但你已經同意了。<br>預計錄取率：100%，因為我們很缺錢。</div>
+  </div>
+  </div>
+  <div class="success" id="successMsg">
+    <div class="success-icon">✓</div>
+    <div class="success-title">恭喜！你被錄取了！</div>
+    <div class="success-body">你的申請已收到。我們的招生委員正在認真審核中（在睡覺）。<br><br>請在<strong>3-5個工作天</strong>後查看你的垃圾郵件夾。<br><br><strong>溫馨提醒：</strong>你填的個資已經賣掉了，謝謝惠顧。</div>
+    <button class="success-btn" onclick="showPayment()">繼續前往付款 →</button>
+  </div>
+</div>
+</div>
+
+<!-- PAYMENT -->
+<div class="bg-white" id="paySection" style="padding:3rem 1.5rem;display:none">
+<div class="form-wrap">
+  <div class="pay-header-inner">
+    <div class="form-eyebrow">💳 安全付款頁面（不安全）</div>
+    <div class="form-title-inner">選擇你的付款方式</div>
+    <div class="form-sub">所有付款方式均受到256位元加密保護（沒有）</div>
+    <div class="pay-amount">NT$4,999</div>
+  </div>
+  <div id="payContent">
+  <div class="pay-body">
+    <div class="method-grid">
+      <div class="method-item" onclick="selectMethod(this,'envelope')">
+        <div class="method-top"><div class="method-icon" style="background:#fff3cd">✉️</div><div><div class="method-name">現金裝信封塞門縫</div></div><div class="method-tag tag-hot">最熱門</div></div>
+        <div class="method-desc">台灣傳統付款方式，安全、可靠、完全無法追蹤。</div>
+        <div class="method-detail" id="detail-envelope">
+          <div class="detail-row"><span class="detail-key">收件地址</span><span class="detail-val">孫大砲博士家門縫</span></div>
+          <div class="detail-row"><span class="detail-key">門縫寬度</span><span class="detail-val">約0.8公分</span></div>
+          <div class="detail-row"><span class="detail-key">收款確認</span><span class="detail-val">3-5年後</span></div>
+          <div class="detail-warning">⚠ 請勿使用掛號，博士不喜歡出門領包裹</div>
+        </div>
+      </div>
+      <div class="method-item" onclick="selectMethod(this,'boss')">
+        <div class="method-top"><div class="method-icon" style="background:#d1ecf1">👔</div><div><div class="method-name">叫老闆刷（反正是他的錢）</div></div><div class="method-tag tag-new">推薦</div></div>
+        <div class="method-desc">你用他的時間上課，順便用他的卡付費，邏輯完全閉環。</div>
+        <div class="method-detail" id="detail-boss">
+          <div class="detail-row"><span class="detail-key">費用名目</span><span class="detail-val">「AI職能培訓」</span></div>
+          <div class="detail-row"><span class="detail-key">老闆知情</span><span class="detail-val">否</span></div>
+          <div class="detail-row"><span class="detail-key">被發現風險</span><span class="detail-val">中等（你自己看著辦）</span></div>
+          <div class="detail-warning">⚠ 本學苑不負責你被開除後的後續費用</div>
+        </div>
+      </div>
+      <div class="method-item" onclick="selectMethod(this,'justice')">
+        <div class="method-top"><div class="method-icon" style="background:#f8d7da">🏠</div><div><div class="method-name">用居住正義換抵學費</div></div><div class="method-tag tag-lol">限量</div></div>
+        <div class="method-desc">政府欠你的，我們幫你收。房東夠爽了，換我們爽一下。</div>
+        <div class="method-detail" id="detail-justice">
+          <div class="detail-row"><span class="detail-key">政府配合度</span><span class="detail-val">0%</span></div>
+          <div class="detail-row"><span class="detail-key">預計實現</span><span class="detail-val">下輩子</span></div>
+          <div class="detail-warning">⚠ 此方案精神上支持但實務上不可行</div>
+        </div>
+      </div>
+      <div class="method-item" onclick="selectMethod(this,'salary')">
+        <div class="method-top"><div class="method-icon" style="background:#d4edda">💸</div><div><div class="method-name">用這個月薪水的一半</div></div><div class="method-tag tag-lol">勇敢</div></div>
+        <div class="method-desc">房租繳完剩下的那半，直接交給我們。</div>
+        <div class="method-detail" id="detail-salary">
+          <div class="detail-row"><span class="detail-key">剩餘生活費</span><span class="detail-val">泡麵錢</span></div>
+          <div class="detail-row"><span class="detail-key">投資報酬率</span><span class="detail-val">負無限大</span></div>
+          <div class="detail-warning">⚠ 本學苑建議你先付房租，但我們還是收你的錢</div>
+        </div>
+      </div>
+      <div class="method-item" onclick="selectMethod(this,'crypto')">
+        <div class="method-top"><div class="method-icon" style="background:#fff3cd">🪙</div><div><div class="method-name">加密貨幣（孫大砲幣）</div></div><div class="method-tag tag-new">科技感</div></div>
+        <div class="method-desc">本學苑自行發行的區塊鏈貨幣，匯率每天由博士本人決定。</div>
+        <div class="method-detail" id="detail-crypto">
+          <div class="detail-row"><span class="detail-key">今日匯率</span><span class="detail-val">1王幣 = NT$0.0001</span></div>
+          <div class="detail-row"><span class="detail-key">所需數量</span><span class="detail-val">49,990,000王幣</span></div>
+          <div class="detail-warning">⚠ 孫大砲幣保證不保值</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pay-btn-area">
+    <button class="pay-btn" onclick="handlePay()">確認付款，榨乾我的錢包</button>
+    <div class="pay-fine">付款即視同放棄所有退款權利。客服電話：孫大砲博士的枕頭旁邊。</div>
+  </div>
+  </div>
+  <div class="success" id="paySuccessMsg">
+    <div class="success-icon">💸</div>
+    <div class="success-title">付款成功！錢已收到！</div>
+    <div class="receipt">
+      <div class="receipt-row"><span style="color:#888">品項</span><span>嗆爆AI實戰學苑 入學費</span></div>
+      <div class="receipt-row"><span style="color:#888">付款方式</span><span id="receiptMethod">—</span></div>
+      <div class="receipt-row"><span style="color:#888">交易編號</span><span>ROAST-<span id="txid"></span></span></div>
+      <div class="receipt-row"><span style="color:#888">發票號碼</span><span>我們沒有開立發票的資格</span></div>
+      <div class="receipt-row"><span style="color:#888">總計</span><span>NT$4,999</span></div>
+    </div>
+    <div class="success-body">恭喜！你的錢已安全轉入孫大砲博士的枕頭下。<br>假文憑將於3-5個工作天內寄出（博士不喜歡出門，可能要久一點）。</div>
+  </div>
+</div>
+</div>
+
+<!-- SHARE -->
+<div class="share-section">
+  <div class="share-title">分享給朋友，讓他們也來上當</div>
+  <div class="share-sub">好東西要分享，詐騙也是。把這個網站傳給你最好的朋友吧 😄</div>
+  <div class="share-btns">
+    <button class="share-btn share-line" onclick="shareToLine()">LINE 分享</button>
+    <button class="share-btn share-fb" onclick="shareToFB()">Facebook 分享</button>
+    <button class="share-btn share-copy" onclick="copyLink()">複製連結</button>
+  </div>
+  <div class="share-note" id="shareNote">分享之後你的朋友會問你是不是沒事做，你說對</div>
+</div>
+
+<div class="disclaimer">
+  ※ 本補習班純屬虛構，如有雷同純屬巧合。「退費保證」為行銷用語，實際退費成功率為0%。學員見證均為捏造。Google評論亦為捏造。本課程無法真正讓你嗆贏AI。孫大砲幣不具任何法律效力。居住正義折抵方案精神上支持但實務上不可行。
+</div>
+<div class="footer">© 2026 嗆爆AI實戰學苑｜孫大砲博士保留所有權利（博士不知道什麼是版權）</div>
+
+<script>
+// TIMER
+let total=23*3600+59*60+47;
+function tick(){if(total<=0)total=23*3600+59*60+59;total--;const h=Math.floor(total/3600),m=Math.floor((total%3600)/60),s=total%60;document.getElementById('h').textContent=String(h).padStart(2,'0');document.getElementById('m').textContent=String(m).padStart(2,'0');document.getElementById('s').textContent=String(s).padStart(2,'0');}
+tick();setInterval(tick,1000);
+
+// TICKER
+const tickerNames=['台北 阿偉','台中 孫北七','高雄 大雄','新竹 工程師小陳','桃園 業務王','台南 老黃','嘉義 無殼蝸牛','基隆 上班族','彰化 摸魚達人','花蓮 自由業','宜蘭 失業中','苗栗 老闆（？）','屏東 夜貓子','澎湖 遠端工作者'];
+const tickerActions=['剛剛報名了入門班','已下定基礎課程','完成付款（居住正義折抵）','正在填寫報名表單','剛剛用老闆的錢報名','選擇了孫大砲幣付款','已加入嗆聲大師班候補'];
+function buildTicker(){
+  const inner=document.getElementById('ticker');
+  let html='';
+  for(let i=0;i<28;i++){
+    const n=tickerNames[Math.floor(Math.random()*tickerNames.length)];
+    const a=tickerActions[Math.floor(Math.random()*tickerActions.length)];
+    html+=`<span class="ticker-item"><span class="ticker-dot"></span><span class="ticker-name">${n}</span><span class="ticker-action">${a}</span></span>`;
+  }
+  inner.innerHTML=html;
+}
+buildTicker();
+
+// POPUP - trigger on mouse leave
+let popupShown=false;
+document.addEventListener('mouseleave',function(e){
+  if(e.clientY<=0&&!popupShown){
+    popupShown=true;
+    document.getElementById('popup').classList.add('show');
+  }
+});
+// Also show after 30 seconds
+setTimeout(()=>{if(!popupShown){popupShown=true;document.getElementById('popup').classList.add('show');}},30000);
+function closePopup(){document.getElementById('popup').classList.remove('show');}
+
+// FORM
+function selectLevel(el){document.querySelectorAll('.radio-item').forEach(i=>i.classList.remove('selected'));el.classList.add('selected');el.querySelector('input').checked=true;}
+
+function handleSubmit(){
+  const name=document.getElementById('name').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const level=document.querySelector('input[name="level"]:checked');
+  const a1=document.getElementById('agree1').checked;
+  const a2=document.getElementById('agree2').checked;
+  if(!name){alert('請輸入姓名（假的也可以）');return}
+  if(!phone){alert('請輸入電話（業務很想打給你）');return}
+  if(!level){alert('請選擇你的嗆聲等級');return}
+  if(!a1||!a2){alert('請勾選同意條款，不然我們怎麼賣你的資料');return}
+  // bump stat
+  const el=document.getElementById('statCount');
+  const cur=parseInt(el.textContent.replace(',',''));
+  el.textContent=(cur+1).toLocaleString();
+  document.getElementById('formContent').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
+
+function showPayment(){
+  document.getElementById('paySection').style.display='block';
+  document.getElementById('paySection').scrollIntoView({behavior:'smooth'});
+}
+
+// PAYMENT
+let selectedMethod='';
+const methodNames={envelope:'現金裝信封塞門縫',boss:'叫老闆刷',justice:'居住正義折抵',salary:'薪水的一半',crypto:'孫大砲幣'};
+function selectMethod(el,val){
+  document.querySelectorAll('.method-item').forEach(i=>{i.classList.remove('selected');i.querySelector('.method-detail').classList.remove('show');});
+  el.classList.add('selected');el.querySelector('.method-detail').classList.add('show');selectedMethod=val;
+}
+function handlePay(){
+  if(!selectedMethod){alert('請選擇付款方式，每一種都很離譜');return}
+  document.getElementById('receiptMethod').textContent=methodNames[selectedMethod];
+  document.getElementById('txid').textContent=Math.random().toString(36).substring(2,10).toUpperCase();
+  document.getElementById('payContent').style.display='none';
+  document.getElementById('paySuccessMsg').style.display='block';
+}
+
+// SHARE
+function shareToLine(){window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(location.href),'_blank')}
+function shareToFB(){window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'_blank')}
+function copyLink(){
+  navigator.clipboard.writeText(location.href).then(()=>{
+    document.getElementById('shareNote').textContent='✓ 連結已複製！快傳給你最好的朋友，讓他也來上當 😂';
+  }).catch(()=>{
+    document.getElementById('shareNote').textContent='你的瀏覽器不讓我複製，請自己手動複製網址';
+  });
+}
+</script>
+</body>
+</html>
